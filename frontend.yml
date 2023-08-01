@@ -1,5 +1,5 @@
 - name: Roboshop Project - Frontend
-  hosts: frontend-dev.devops-tools.online
+  hosts: all
   become: true
   tasks:
     - name: Install Nginx
