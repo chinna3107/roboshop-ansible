@@ -1,8 +1,8 @@
-- name: Roboshop Project - Frontend
+- name: Mongodb setup
   hosts: all
-  become: true
+  become: yes
   tasks:
-    - name: Copy Roboshop configuration
+    - name: Copy mongodb yum repo file
       ansible.builtin.copy:
         src: mongo.repo
         dest: /etc/yum.repos.d/mongo.repo
