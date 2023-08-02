@@ -15,8 +15,8 @@
 
 - name: Download nodejs dependences
   ansible.builtin.shell: npm install
-    args:
-      chdir: /app
+  args:
+    chdir: /app
 
 - name: Schema Setup
   ansible.builtin.import_tasks: app-preq.yml
