@@ -1,0 +1,30 @@
+- name: Copy mongodb yum repo file
+  ansible.builtin.copy:
+      src: mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+- name: Install nodejs repos
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+-name: Install nodeJS
+ ansible.builtin.yum:
+   name: nodejs
+   status: installed
+
+-name: App Pre-requisites
+  ansible.builtin.import_tasks: app-preq.yml
+
+-name: Download nodejs dependences
+ ansible.builtin.shell: npm install
+   args:
+     chdir: /app
+
+-name: Schema Setup
+  ansible.builtin.import_tasks: app-preq.yml
+
+  #func_nodejs() {
+  #  echo -e "\e[36m<<<< installing nodejs repo >>>>\e[0m" | tee -a ${log}
+  #  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log}
+
+  # echo -e "\e[36m<<<< Installing nodejs >>>>\e[0m" | tee -a ${log}
+  # yum install nodejs -y &>>${log}
+  #}

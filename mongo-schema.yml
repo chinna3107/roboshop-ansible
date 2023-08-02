@@ -1,0 +1,19 @@
+-name: Mongo Schema setup
+  ansible.builtin.yum:
+    name: mongodb-org-shell
+    state: installed
+
+-name: Load Schema
+  ansible.builtin.shell: mongo --host mongodb.devops-tools.online </app/schema/${component}.js
+
+
+  #func_mongoclient() {
+  #  #if [ "{schema_type}" == "mongodb" ]; then
+  #  echo -e "\e[36m<<<< Install Mongo client  >>>>\e[0m" | tee -a ${log}
+  #  yum install mongodb-org-shell -y &>>${log}
+    
+  #  echo -e "\e[36m<<<<   Load Application schema >>>>\e[0m" | tee -a ${log}
+  # mongo --host mongodb.devops-tools.online </app/schema/${component}.js &>>${log}
+    #fi
+  
+  # }
