@@ -11,7 +11,7 @@
    status: installed
 
 - name: App Pre-requisites
-  ansible builtin import_tasks: app-preq.yml
+  ansible.builtin.import_tasks: app-preq.yml
 
 - name: Download nodejs dependences
   ansible.builtin.shell: npm install
