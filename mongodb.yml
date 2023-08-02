@@ -1,0 +1,32 @@
+- name: Roboshop Project - Frontend
+  hosts: all
+  become: true
+  tasks:
+    - name: Copy Roboshop configuration
+      ansible.builtin.copy:
+        src: mongo.repo
+        dest: /etc/yum.repos.d/mongo.repo
+
+    - name: install Mongodb
+      ansible.builtin.yum:
+        name: mongodb-org
+        state: installed
+
+    - name: update listener Address in mongodb configuration
+      ansible.builtin.replace:
+        path: /etc/mongod.conf
+        regexp: '127.0.0.1'
+        replace: '0.0.0.0'
+
+    - name: Restart Mongodb
+      ansible.builtin.systemd:
+        name: mongod
+        state: restarted
+        enabled: yes
+
+#log=/tmp/roboshop.log
+#cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
+#yum install mongodb-org -y &>>${log}
+#systemctl enable mongod &>>${log}
+#systemctl start mongod &>>${log}
+#systemctl restart mongod &>>${log}
