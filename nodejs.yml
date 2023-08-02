@@ -5,7 +5,7 @@
 - name: Install nodejs repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
--name: Install nodeJS
+-name: Install nodejs
  ansible.builtin.yum:
    name: nodejs
    status: installed
@@ -20,11 +20,3 @@
 
 -name: Schema Setup
   ansible.builtin.import_tasks: app-preq.yml
-
-  #func_nodejs() {
-  #  echo -e "\e[36m<<<< installing nodejs repo >>>>\e[0m" | tee -a ${log}
-  #  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log}
-
-  # echo -e "\e[36m<<<< Installing nodejs >>>>\e[0m" | tee -a ${log}
-  # yum install nodejs -y &>>${log}
-  #}
