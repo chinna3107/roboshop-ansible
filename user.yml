@@ -3,7 +3,7 @@
   become: yes
   vars:
     component: user
-    schema: true
+    schema: ture
 
   tasks:
     - name: NodeJS Setup
