@@ -5,8 +5,7 @@
 
 - name: start {{ component }} service
   ansible.builtin.systemd:
-   # name: "{{component}}"
-    name: catalogue-dev.devops-tools.online
+    name: "{{component}}"
     state: restarted
     enabled: yes
-    deamon_reload: yes
+    daemon_reload: yes
