@@ -16,6 +16,3 @@
 
 - name: Schema Setup
   ansible.builtin.import_tasks: app-preq.yml
-
- # name: systemd Setup
- # ansible.builtin.import_tasks: systemd-setup.yml
