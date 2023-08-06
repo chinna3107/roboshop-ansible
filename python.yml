@@ -17,15 +17,3 @@
 - name: systemd setup
   ansible.builtin.import_tasks: systemd-setup.yml
 
-
-
-#  log=/tmp/roboshop.log
-#  echo -e "\e[36m<<<< creating ${component} >>>>>\e[0m" | tee -a ${log}
-#  cp ${component}.service  /etc/systemd/system/${component}.service &>>${log}
-
-#  yum install python36 gcc python3-devel -y &>>${log}
-
-# func_apppreq
-
-# cd /app &>>${log}
-# pip3.6 install -r requirements.txt &>>${log}
