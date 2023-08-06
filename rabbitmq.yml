@@ -3,15 +3,16 @@
   become: true
   tasks:
     - name: Install erlang Repos
-      ansible.builtin.shell: -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash
 
     - name: Install rabbitmq Repos
-      ansible.builtin.shell: -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
+      ansible.builtin.shell: curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash
 
     - name: Install Rabbitmq server
       ansible.builtin.yum:
         name: rabbitmq-server
         state: installed
+
     - name: start rabbitmq service
       ansible.builtin.systemd:
         name: rabbitmq-server
