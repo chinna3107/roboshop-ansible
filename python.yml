@@ -1,0 +1,31 @@
+- name: install python
+  ansible.builtin.yum:
+    name:
+        - python36
+        - gcc
+        - python3-devel
+    state: installed
+
+- name: app prerequisite
+  ansible.builtin.import_tasks: app-preq.yml
+
+- name: download python dependencies
+  ansible.builtin.shell: pip3.6 install -r requirements.txt
+  args:
+    chdir: /app
+
+- name: systemd setup
+  ansible.builtin.import_task: systemd-setup.yml
+
+
+
+#  log=/tmp/roboshop.log
+#  echo -e "\e[36m<<<< creating ${component} >>>>>\e[0m" | tee -a ${log}
+#  cp ${component}.service  /etc/systemd/system/${component}.service &>>${log}
+
+#  yum install python36 gcc python3-devel -y &>>${log}
+
+# func_apppreq
+
+# cd /app &>>${log}
+# pip3.6 install -r requirements.txt &>>${log}
