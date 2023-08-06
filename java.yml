@@ -7,7 +7,7 @@
   ansible.builtin.import_tasks: app-preq.yml
 
 - name: download Maven dependencies
-  ansible.builtin.shell: mvn clean package ; mvn target /{{component}}-1.0.jar {{component}}.jar
+  ansible.builtin.shell: mvn clean package ; mvn target/{{component}}-1.0.jar {{component}}.jar
   args:
     chdir: /app
 
